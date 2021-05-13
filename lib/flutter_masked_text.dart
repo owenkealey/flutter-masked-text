@@ -11,11 +11,11 @@ class MaskedTextController extends TextEditingController {
       var previous = this._lastUpdatedText;
       if (this.beforeChange(previous, this.text)) {
         this.updateText(this.text);
+        if(previous.length < this.text.length){
+          this.moveCursorToEnd();
+        }
       } else {
         this.updateText(this._lastUpdatedText);
-      }
-      if(previous.length < this.text.length){
-        this.moveCursorToEnd();
       }
     });
 
