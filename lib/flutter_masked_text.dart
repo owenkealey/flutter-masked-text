@@ -9,9 +9,10 @@ class MaskedTextController extends TextEditingController {
 
     this.addListener(() {
       var previous = this._lastUpdatedText;
+      var len = previous.length;
       if (this.beforeChange(previous, this.text)) {
         this.updateText(this.text);
-        if(previous.length < this.text.length){
+        if(len < this.text.length){
           this.moveCursorToEnd();
         }
       } else {
