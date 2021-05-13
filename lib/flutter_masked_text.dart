@@ -11,7 +11,7 @@ class MaskedTextController extends TextEditingController {
       var previous = this._lastUpdatedText;
       if (this.beforeChange(previous, this.text)) {
         this.updateText(this.text);
-        this.afterChange(previous, this.text);
+        this.moveCursorToEnd();
       } else {
         this.updateText(this._lastUpdatedText);
       }
@@ -25,7 +25,7 @@ class MaskedTextController extends TextEditingController {
   Map<String, RegExp> translator;
 
   Function afterChange = (String previous, String next) {
-    this.moveCursorToEnd();
+    
   };
   Function beforeChange = (String previous, String next) {
     return true;
